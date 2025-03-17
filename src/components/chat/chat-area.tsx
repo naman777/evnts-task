@@ -16,6 +16,7 @@ interface ChatAreaProps {
   showPrediction: boolean;
   predictionMessages: Message[];
   onClosePrediction: () => void;
+  handleSendMessage: (message: string) => void;
 }
 
 export default function ChatArea({
@@ -24,6 +25,7 @@ export default function ChatArea({
   showPrediction,
   predictionMessages,
   onClosePrediction,
+  handleSendMessage
 }: ChatAreaProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -83,7 +85,10 @@ export default function ChatArea({
                                 borderImage:
                                   "linear-gradient(to right, #1977F2, #D22163) 1",
                               }}
-                              onClick={onClosePrediction}
+                              onClick={()=>{
+                                handleSendMessage(message.content)  
+                                onClosePrediction()
+                              }}
                             >
                               Use suggestion
                             </button>

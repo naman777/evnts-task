@@ -112,7 +112,7 @@ export default function ChatInterface() {
     }
 
     const nextBotMessage = initialMessages[nextMessageIndex + 1];
-
+    console.log(nextBotMessage)
     // Simulate bot response
     setTimeout(() => {
       setMessages((prev) => [...prev, nextBotMessage]);
@@ -123,7 +123,7 @@ export default function ChatInterface() {
   const handleUseSuggestion = (suggestion: Suggestion) => {
     handleSendMessage(suggestion.content, true);
     setTimeout(() => {
-      setCurrentMessageIndex((prev) => prev + 1); // Move to the next message
+      setCurrentMessageIndex((prev) => prev + 2); // Move to the next message
     }, 1000);
   };
 
@@ -209,6 +209,16 @@ export default function ChatInterface() {
                     showPrediction={showPrediction}
                     predictionMessages={predictionMessages}
                     onClosePrediction={closePrediction}
+                    handleSendMessage={(message:string)=>{
+                      handleUseSuggestion({
+                        id: "1",
+                        messageId: "1",
+                        content: message,
+                        clarification: "",
+                        percentageImprovement: 15,
+
+                      })
+                    }}
                   />
                 </div>
 
@@ -243,6 +253,8 @@ export default function ChatInterface() {
                   onPredictMessages={(suggestionId: string) =>
                     handlePredictMessages(suggestionId)
                   } // Correctly passing suggestionId
+                  //@ts-ignore
+                  handleSendMessage={(message:string) => handleSendMessage(message)}
                 />
               </div>
             </div>

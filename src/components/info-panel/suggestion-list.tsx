@@ -5,6 +5,9 @@ import type { Suggestion } from "@/types/chat"
 import { Sparkles, MessageSquare } from "lucide-react"
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card"
 import { Skeleton } from "@/components/ui/skeleton"
+import AiImage from "@/assets/info-panel/ai.svg"
+import Image from "next/image"
+
 
 interface SuggestionListProps {
   suggestions: Suggestion[]
@@ -33,8 +36,8 @@ export default function SuggestionList({
 
   return (
     <div>
-      <div className="flex items-center mb-2">
-        <Sparkles className="h-4 w-4 mr-2 text-purple-500" />
+      <div className="flex items-center mb-2 ">
+        <Image src={AiImage} alt="AI" width={16} height={16} />
         <span className="text-sm text-gray-500">
           {isLoading ? "Best follow-up suggestions" : "Top message follow-up recommendation"}
         </span>
@@ -49,9 +52,9 @@ export default function SuggestionList({
         suggestions.map((suggestion) => (
           <div
             key={suggestion.id}
-            className="bg-gradient-to-r from-[#fdf0f8] to-[#faeaf8] p-4 rounded-md shadow-sm mb-3 border border-pink-100"
+            className="bg-gradient-to-r from-[#fdf0f8] to-[#faeaf8] p-4 rounded-md shadow-sm mb-3 border-2 border-blue-500 "
           >
-            <div className="flex justify-between items-center mb-2">
+            <div className="flex justify-between items-center mb-2 border-b border-gray-200 pb-2">
               <div className="flex items-center">
                 <HoverCard>
                   <HoverCardTrigger asChild>
@@ -65,7 +68,7 @@ export default function SuggestionList({
                     </p>
                   </HoverCardContent>
                 </HoverCard>
-                <span className="text-xs text-gray-500 ml-2">{suggestion.clarification}</span>
+                <span className="text-xs text-black ml-2">{suggestion.clarification}</span>
               </div>
 
               <button
@@ -77,7 +80,7 @@ export default function SuggestionList({
               </button>
             </div>
 
-            <p className="text-sm mb-2">{suggestion.content}</p>
+            <p className="text-sm text-[#545961] mb-2">{suggestion.content}</p>
 
             <button
               onClick={() => handleUseSuggestion(suggestion)}

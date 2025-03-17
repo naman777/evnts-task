@@ -11,6 +11,7 @@ interface InfoPanelProps {
   suggestions: Suggestion[];
   onUseSuggestion: (suggestion: Suggestion) => void;
   onPredictMessages: () => void;
+  handleSendMessage: (message: string) => void;
 }
 
 export default function InfoPanel({
@@ -19,13 +20,26 @@ export default function InfoPanel({
   suggestions,
   onUseSuggestion,
   onPredictMessages,
+  handleSendMessage,
 }: InfoPanelProps) {
   return (
     <div className="w-full bg-gradient-to-t from-pink-50 via-pink-50 to-[#FAF9F5] h-screen  pt-3">
       <div className="flex flex-col gap-2 px-4">
         <StatusInfo />
         <LastMessage message={lastMessage} />
-        <ConversationPaths isThinking={isThinking} />
+        <ConversationPaths
+          isThinking={isThinking}
+          suggestions={suggestions}
+          handleSendMessage={(content: string) => {
+            onUseSuggestion({
+              id: "0",
+              messageId: "0",
+              content,
+              clarification: "",
+              percentageImprovement: 0,
+            });
+          }}
+        />
         <SuggestionList
           suggestions={suggestions}
           isLoading={isThinking}
