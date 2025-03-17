@@ -20,7 +20,7 @@ export default function InfoPanel({
   onPredictMessages,
 }: InfoPanelProps) {
   return (
-    <div className="w-full md:w-96 bg-[#fdf7fb] p-4 overflow-y-auto">
+    <div className="w-full  bg-gradient-to-b from-[#fffdf7] to-[#fff9f9] p-4 overflow-y-auto">
       <div className="flex justify-between items-center mb-4">
         <div className="text-purple-700 font-medium">OraclA cl-pro</div>
         <div className="text-gray-500">
@@ -37,6 +37,7 @@ export default function InfoPanel({
 
       <SuggestionList
         suggestions={suggestions}
+        isLoading={isThinking}
         onUseSuggestion={onUseSuggestion}
         onPredictMessages={onPredictMessages}
       />

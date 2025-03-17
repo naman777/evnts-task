@@ -1,9 +1,9 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Paperclip, Clock, Send } from "lucide-react"
+import sendButton from "@/assets/chat/send-button.svg"
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void
@@ -21,33 +21,30 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
   }
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2">
-      <form onSubmit={handleSubmit} className="flex items-center">
-        <button type="button" className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
-          <Paperclip className="h-5 w-5" />
-        </button>
+    <div className="absolute bottom-0 left-0 right-0 bg-[#E3EDE7] py-3 px-4 flex items-center gap-3">
+      <button type="button" className="text-gray-500 hover:text-gray-700">
+        <Paperclip className="h-5 w-5" />
+      </button>
 
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Message"
-          className="flex-1 p-2 mx-2 bg-transparent focus:outline-none"
-        />
+      <input
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        placeholder="Message"
+        className="flex-1 px-4 py-2 bg-white rounded-full outline-none text-sm"
+      />
 
-        <button type="button" className="p-2 text-gray-500 hover:text-gray-700 rounded-full hover:bg-gray-100">
-          <Clock className="h-5 w-5" />
-        </button>
+      <button type="button" className="text-gray-500 hover:text-gray-700">
+        <Clock className="h-5 w-5" />
+      </button>
 
-        <button
-          type="submit"
-          className="p-2 text-white bg-purple-500 rounded-full hover:bg-purple-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={!message.trim()}
-        >
-          <Send className="h-5 w-5" />
-        </button>
-      </form>
+      <button
+        type="submit"
+        onClick={handleSubmit}
+        className="bg-gray-500 hover:bg-gray-600 text-white rounded-full p-1.5 pr-2 flex items-center justify-center"
+      >
+        <Send className="h-5 w-5" />
+      </button>
     </div>
   )
 }
-

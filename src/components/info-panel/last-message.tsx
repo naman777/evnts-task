@@ -17,13 +17,18 @@ export default function LastMessage({ message }: LastMessageProps) {
         <span className="text-sm text-gray-500">Last message</span>
       </div>
 
-      <div className="bg-white p-3 rounded-md shadow-sm flex items-start">
-        <Avatar className="h-6 w-6 mr-2 bg-purple-500 shrink-0">
-          <AvatarImage src="/placeholder.svg?height=24&width=24" alt="OraclA" />
-          <AvatarFallback className="bg-purple-500 text-white text-xs">OA</AvatarFallback>
-        </Avatar>
+      <div className="bg-white p-3 rounded-md shadow-sm flex items-start border border-gray-100">
+        {message.sender === "bot" && (
+          <Avatar className="h-6 w-6 mr-2 bg-purple-500 shrink-0">
+            <AvatarImage src="/placeholder.svg?height=24&width=24" alt="OraclA" />
+            <AvatarFallback className="bg-purple-500 text-white text-xs">OA</AvatarFallback>
+          </Avatar>
+        )}
 
-        <p className="text-sm">{message.content}</p>
+        <p className="text-sm">
+          {message.content}
+          {message.content.includes("select your role") && <span className="font-bold"> select your role</span>}
+        </p>
       </div>
     </div>
   )

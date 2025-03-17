@@ -27,7 +27,7 @@ export default function ConversationPaths({ isThinking }: ConversationPathsProps
       const distanceFromCenter = Math.abs(row - centerRow) + Math.abs(col - centerCol)
 
       // Determine color and opacity based on distance
-      let color = "bg-blue-400"
+      let color = "bg-blue-500"
       let opacity = 1 - distanceFromCenter / (rows + dotsPerRow / 2)
 
       if (opacity < 0.3) {
@@ -35,7 +35,7 @@ export default function ConversationPaths({ isThinking }: ConversationPathsProps
       }
 
       if (distanceFromCenter > 5) {
-        color = "bg-blue-200"
+        color = "bg-blue-300"
       }
 
       if (distanceFromCenter > 8) {
