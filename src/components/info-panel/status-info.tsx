@@ -1,23 +1,26 @@
 export default function StatusInfo() {
   return (
-    <div className="grid grid-cols-3 gap-2 mb-4">
-      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-100">
-        <h3 className="text-xs text-gray-500 mb-1">Buyer emotion</h3>
-        <div className="text-sm font-medium">
-          <span className="text-blue-500">Excited</span> <span className="text-yellow-500">😊</span>
+    <div className="flex items-center justify-around text-md text-black border-b  border-gray-200 pb-4 bg-[#FAF9F5]">
+      <div className="flex flex-col items-center justify-center gap-1">
+        <h3 className="text-md font-medium text-black">Buyer emotion</h3>
+        <div className="text-[#1977F2] font-medium flex items-center gap-1">
+          Excited <span>😆</span>
         </div>
       </div>
 
-      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-100">
-        <h3 className="text-xs text-gray-500 mb-1">Onboarding Stage</h3>
-        <div className="text-sm font-medium text-blue-500">Role & Personalization</div>
+      <div className="w-[1px] h-10 bg-gray-300"></div>
+
+      <div className="flex flex-col items-center gap-1">
+        <h3 className="text-md font-medium text-black">Onboarding Stage</h3>
+        <div className="text-[#1977F2] font-medium">Profile & Preferences</div>
       </div>
 
-      <div className="bg-white p-3 rounded-md shadow-sm border border-gray-100">
-        <h3 className="text-xs text-gray-500 mb-1">Current Goal</h3>
-        <div className="text-sm font-medium text-blue-500">Identify user role</div>
+      <div className="w-[1px] h-10 bg-gray-300"></div>
+
+      <div className="flex flex-col items-center gap-1">
+        <h3 className="text-md font-medium text-black">Current Goal</h3>
+        <div className="text-[#1977F2] font-medium">Get company’s name</div>
       </div>
     </div>
-  )
+  );
 }
-

@@ -11,6 +11,9 @@ import type { Message, Suggestion } from "@/types/chat";
 import { initialMessages, initialSuggestions } from "@/data/initial-data";
 import ProgressBar from "../ui/progress-bar";
 import ChatNavbar from "./chat-navbar";
+import InfoHeader from "../info-panel/info-header";
+import BackGroundImage from "@/assets/chat/chat-bg.jpeg"
+
 
 export default function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -22,7 +25,7 @@ export default function ChatInterface() {
   const [predictionMessages, setPredictionMessages] = useState<Message[]>([]);
   const isMobile = useMobile();
 
-  const [infoPanelWidth, setInfoPanelWidth] = useState(300); // Initial width
+  const [infoPanelWidth, setInfoPanelWidth] = useState(600); // Initial width
   const [isResizing, setIsResizing] = useState(false);
 
   const handleMouseDown = () => {
@@ -133,49 +136,77 @@ export default function ChatInterface() {
   };
 
   return (
-    <div className="flex w-full h-screen overflow-hidden">
+    <div className="flex w-full h-screen overflow-hidden bg-[#FAF9F5]">
       <Sidebar />
-      <div className="flex flex-1 flex-col">
-        <div className="sticky top-0 z-10 bg-white border-b border-gray-200">
+      <div className="flex flex-1 flex-col h-screen overflow-hidden">
+        {/* Fixed header */}
+        <div className="sticky top-0 z-10 border-b border-gray-200 bg-white">
           <ChatHeader username="Fabio Rossi" />
         </div>
-          <ChatNavbar />
-          <div className="flex flex-1 overflow-hidden">
-            <div className="h-full w-8 bg-gray-50">
-              <ProgressBar progress={progress} />
-            </div>
 
-            <div className="flex-1 flex flex-col overflow-y-auto pl-4 no-scrollbar">
-              <ChatArea
-                messages={messages}
-                isThinking={isThinking}
-                progress={progress}
-                showPrediction={showPrediction}
-                predictionMessages={predictionMessages}
-                onClosePrediction={closePrediction}
-              />
-              <div className="sticky bottom-0 bg-white p-2 border-t border-gray-200">
-                <ChatInput onSendMessage={handleSendMessage} />
+        {/* Main content area with proper overflow handling */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* Left section with chat */}
+          <div className="flex flex-col flex-1 min-w-0 h-full overflow-hidden">
+            <ChatNavbar />
+            <div className="flex flex-1 overflow-hidden">
+              {/* Progress bar */}
+              <div className="h-full w-8 bg-gray-50 flex-shrink-0">
+                <ProgressBar progress={progress} />
+              </div>
+
+              {/* Chat messages area with proper scrolling */}
+              <div className="flex-1 flex flex-col min-w-0 h-full relative mx-4">
+                <div className="flex-1 overflow-y-auto pl-4 no-scrollbar"
+                style={{
+                  backgroundImage: `url(${BackGroundImage.src})`,
+                  backgroundSize: "contain",
+                  backgroundPosition: "center",
+                  backgroundAttachment: "fixed",
+                }}>
+                  <ChatArea
+                    messages={messages}
+                    isThinking={isThinking}
+                    progress={progress}
+                    showPrediction={showPrediction}
+                    predictionMessages={predictionMessages}
+                    onClosePrediction={closePrediction}
+                  />
+                </div>
+
+                {/* Fixed input at bottom */}
+                <div className="sticky bottom-0 bg-white   border-t border-gray-200 w-full z-10">
+                  <ChatInput onSendMessage={handleSendMessage} />
+                </div>
               </div>
             </div>
+          </div>
 
-          {/* Divider for resizing */}
+          {/* Resizer */}
           <div
-            className="w-2 cursor-col-resize bg-gray-300 hover:bg-gray-400"
+            className="w-2 cursor-col-resize bg-gray-300 hover:bg-gray-400 flex-shrink-0"
             onMouseDown={handleMouseDown}
-            />
+          />
 
-          <div
-            className="overflow-y-auto overflow-x-hidden bg-gray-100 no-scrollbar"
-            style={{ width: `${infoPanelWidth}px` }}
-            >
-            <InfoPanel
-              lastMessage={messages[messages.length - 1]}
-              isThinking={isThinking}
-              suggestions={suggestions}
-              onUseSuggestion={handleUseSuggestion}
-              onPredictMessages={handlePredictMessages}
-              />
+          {/* Info panel with fixed height and independent scrolling */}
+          <div className="h-full flex-shrink-0 overflow-hidden bg-[#FAF9F5]" style={{ width: `${infoPanelWidth}px` }}>
+            <div className="flex flex-col h-full">
+              {/* Fixed info header */}
+              <div className="sticky top-0 z-10 bg-[#FAF9F5] border-b border-gray-200">
+                <InfoHeader />
+              </div>
+
+              {/* Scrollable info panel content */}
+              <div className="flex-1 overflow-y-auto overflow-x-hidden no-scrollbar">
+                <InfoPanel
+                  lastMessage={messages[messages.length - 1]}
+                  isThinking={isThinking}
+                  suggestions={suggestions}
+                  onUseSuggestion={handleUseSuggestion}
+                  onPredictMessages={handlePredictMessages}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

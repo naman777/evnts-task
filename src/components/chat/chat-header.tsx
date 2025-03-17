@@ -7,7 +7,7 @@ interface ChatHeaderProps {
 
 export default function ChatHeader({ username }: ChatHeaderProps) {
   return (
-    <div className="flex justify-between items-center p-4 border-b border-gray-200 bg-white ">
+    <div className="flex justify-between items-center p-4 bg-[#FAF9F5] ">
       <div>
         <h2 className="text-sm text-gray-500">Welcome,</h2>
         <h1 className="text-lg font-medium">{username}</h1>

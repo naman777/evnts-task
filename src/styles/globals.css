@@ -139,3 +139,16 @@
   -ms-overflow-style: none;
 }
 
+.text-gradient {
+  background: linear-gradient(
+    to right,
+    #a59fc3,
+    #542b81,
+    #dc379f,
+    #f3a199,
+    #faf6e8
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
