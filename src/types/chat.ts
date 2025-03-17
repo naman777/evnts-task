@@ -7,6 +7,7 @@ export interface Message {
 }
 
 export interface Suggestion {
+  messageId: string
   id: string
   content: string
   clarification: string

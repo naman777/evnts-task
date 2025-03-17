@@ -152,3 +152,6 @@
   -webkit-text-fill-color: transparent;
 }
 
+body {
+  background: linear-gradient(to right, #1977F2, #D22163);
+}

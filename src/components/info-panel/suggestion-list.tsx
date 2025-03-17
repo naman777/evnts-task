@@ -10,7 +10,7 @@ interface SuggestionListProps {
   suggestions: Suggestion[]
   isLoading: boolean
   onUseSuggestion: (suggestion: Suggestion) => void
-  onPredictMessages: () => void
+  onPredictMessages: (id:string) => void
 }
 
 export default function SuggestionList({
@@ -69,10 +69,10 @@ export default function SuggestionList({
               </div>
 
               <button
-                onClick={onPredictMessages}
-                className="text-xs text-purple-600 hover:text-purple-800 flex items-center"
-              >
-                Predict Next Messages
+                onClick={()=> onPredictMessages(suggestion.id)}
+              className="text-sm font-semibold bg-gradient-to-r from-[#1977F2] to-[#D22163] text-transparent bg-clip-text flex items-center">
+              
+                Preview Next Messages
                 <MessageSquare className="h-3 w-3 ml-1" />
               </button>
             </div>
@@ -82,7 +82,7 @@ export default function SuggestionList({
             <button
               onClick={() => handleUseSuggestion(suggestion)}
               disabled={loadingStates[suggestion.id]}
-              className="text-xs text-purple-600 hover:text-purple-800 disabled:opacity-50"
+              className="text-sm font-semibold bg-gradient-to-r from-[#1977F2] to-[#D22163] text-transparent bg-clip-text"
             >
               {loadingStates[suggestion.id] ? "Sending..." : "Use suggestion"}
             </button>
