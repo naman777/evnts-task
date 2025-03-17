@@ -25,7 +25,7 @@ export default function ChatInterface() {
   const isMobile = useMobile();
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
-  const [infoPanelWidth, setInfoPanelWidth] = useState(600); // Initial width
+  const [infoPanelWidth, setInfoPanelWidth] = useState(450); // Initial width
   const [isResizing, setIsResizing] = useState(false);
 
   const currentMessage = messages[currentMessageIndex];
@@ -179,7 +179,7 @@ export default function ChatInterface() {
   return (
     <div className="flex w-full h-screen overflow-hidden bg-[#FAF9F5]">
       <Sidebar />
-      <div className="flex flex-1 flex-col h-screen overflow-hidden">
+      <div className="flex flex-1 flex-col h-screen overflow-hidden pl-8 ">
         <div className="sticky top-0 z-10 border-b border-gray-200 bg-white">
           <ChatHeader username="Fabio Rossi" />
         </div>

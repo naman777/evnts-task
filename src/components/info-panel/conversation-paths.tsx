@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Sparkles } from "lucide-react";
-import Paths from "@/assets/info-panel/paths.svg"
+import Paths from "@/assets/info-panel/paths.svg";
 import Image from "next/image";
 
 interface ConversationPathsProps {
@@ -199,33 +199,40 @@ export default function ConversationPaths({
       {/* Suggestion card on click */}
       {hoveredSuggestion && hoverPosition && (
         <div
-          className="fixed bg-white shadow-lg p-4 border border-gray-200 w-80 z-50 suggestion-card   "
+          className="fixed z-50"
           style={{
             left: `${hoverPosition.x}px`,
             top: `${hoverPosition.y - 120}px`,
             transform: "translate(-50%, 0)",
           }}
-          onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center mb-2 border-b border-gray-200 pb-2">
-            <span className="text-xs font-medium px-2 py-0.5 rounded bg-green-100 text-green-800">
-              +{hoveredSuggestion.percentageImprovement}%
-            </span>
-            <span className="ml-2 text-sm text-green-600">
-              {hoveredSuggestion.clarification}
-            </span>
+          {/* Gradient Border Wrapper */}
+          <div
+            className="p-[1.5px] "
+            style={{
+              background: "linear-gradient(to right, #1977F2, #D22163)",
+            }}
+          >
+            {/* Card with Padding Inside Gradient Border */}
+            <div className="bg-[#FAF9F5] shadow-lg p-4 border  w-80">
+              <div className="flex items-center mb-2 border-b border-gray-200 pb-2">
+                <span className="text-xs font-medium px-2 py-0.5 rounded bg-green-100 text-green-800">
+                  +{hoveredSuggestion.percentageImprovement}%
+                </span>
+                <span className="ml-2 text-sm text-green-600">
+                  {hoveredSuggestion.clarification}
+                </span>
 
-            <button
-              className="px-6 py-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1977F2] to-[#D22163] text-sm font-medium"
-              style={{
-                borderImage: "linear-gradient(to right, #1977F2, #D22163) 1",
-              }}
-              onClick={(e) => handleUseButtonClick(hoveredSuggestion, e)}
-            >
-              Use suggestion
-            </button>
+                <button
+                  className="px-6 py-2 text-transparent bg-clip-text bg-gradient-to-r from-[#1977F2] to-[#D22163] text-sm font-medium border border-transparent"
+                  onClick={(e) => handleUseButtonClick(hoveredSuggestion, e)}
+                >
+                  Use suggestion
+                </button>
+              </div>
+              <p className="text-[#545961] mb-3">{hoveredSuggestion.content}</p>
+            </div>
           </div>
-          <p className="text-gray-700 mb-3">{hoveredSuggestion.content}</p>
         </div>
       )}
     </div>

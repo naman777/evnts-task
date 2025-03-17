@@ -1,30 +1,32 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { Paperclip, Clock, Send } from "lucide-react"
+import type React from "react";
+import { useState } from "react";
+import { Paperclip, Clock, Send } from "lucide-react";
+import Arrow from "@/assets/chat/arrow.svg";
+import Image from "next/image";
 
 interface ChatInputProps {
-  onSendMessage: (message: string) => void
+  onSendMessage: (message: string) => void;
 }
 
 export default function ChatInput({ onSendMessage }: ChatInputProps) {
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e?: React.FormEvent) => {
-    e?.preventDefault()
+    e?.preventDefault();
     if (message.trim()) {
-      onSendMessage(message)
-      setMessage("")
+      onSendMessage(message);
+      setMessage("");
     }
-  }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault()
-      handleSubmit()
+      e.preventDefault();
+      handleSubmit();
     }
-  }
+  };
 
   return (
     <div className="absolute bottom-0 left-0 right-0 bg-[#E3EDE7] py-3 px-4 flex items-center gap-3 ">
@@ -45,13 +47,14 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
         <Clock className="h-5 w-5" />
       </button>
 
+      
       <button
         type="submit"
         onClick={handleSubmit}
-        className="bg-gray-500 hover:bg-gray-600 text-white rounded-full p-1.5 pr-2 flex items-center justify-center"
+        className="bg-gray-500 hover:bg-gray-600 rounded-full text-white p-2 flex items-center justify-center"
       >
-        <Send className="h-5 w-5" />
-      </button>
+      <Image src={Arrow} alt="Send" width={16} height={16} />
+      </button> 
     </div>
-  )
+  );
 }

@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 import BackGroundImage from "@/assets/chat/chat-bg.jpeg";
 import Image from "next/image";
 import logo from "@/assets/chat/chatbot-logo.svg";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 
 interface ChatAreaProps {
   messages: Message[];
@@ -25,7 +26,7 @@ export default function ChatArea({
   showPrediction,
   predictionMessages,
   onClosePrediction,
-  handleSendMessage
+  handleSendMessage,
 }: ChatAreaProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -85,9 +86,9 @@ export default function ChatArea({
                                 borderImage:
                                   "linear-gradient(to right, #1977F2, #D22163) 1",
                               }}
-                              onClick={()=>{
-                                handleSendMessage(message.content)  
-                                onClosePrediction()
+                              onClick={() => {
+                                handleSendMessage(message.content);
+                                onClosePrediction();
                               }}
                             >
                               Use suggestion
@@ -99,14 +100,14 @@ export default function ChatArea({
                                 <p>{message.content}</p>
                               </div>
                             </div>
-                            <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0">
-                              <Image
-                                src="/placeholder.svg?height=32&width=32"
-                                alt="User"
-                                width={32}
-                                height={32}
-                                className="object-cover"
-                              />
+                            <div className="rounded-full overflow-hidden flex-shrink-0">
+                              <Avatar className="h-10 w-10 p-2 bg-gray-200">
+                                <AvatarImage
+                                  src="/placeholder.svg?height=40&width=40"
+                                  alt="Fabio"
+                                />
+                                <AvatarFallback>FR</AvatarFallback>
+                              </Avatar>
                             </div>
                           </div>
                         </div>
