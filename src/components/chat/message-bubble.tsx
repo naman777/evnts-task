@@ -45,8 +45,8 @@ export default function MessageBubble({ message, isPrediction = false }: Message
 
   return (
     <div className="flex justify-end mb-4 min-w-[2rem]">
-      <div className="flex flex-col items-end max-w-[75%]">
-        <div className="relative bg-[#DCF8C6] p-3 rounded-lg shadow-md text-sm text-[#545961] min-w-[7rem] max-w-[75%]">
+      <div className="flex flex-col items-end max-w-[300px]">
+        <div className="relative bg-[#DCF8C6] p-3 rounded-lg shadow-md text-sm text-[#545961] min-w-[7rem] max-w-[550px]">
           <p className="pb-2">{message.content}</p>
   
           {/* Time & checkmark inside the bubble */}

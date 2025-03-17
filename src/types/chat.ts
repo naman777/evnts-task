@@ -4,6 +4,7 @@ export interface Message {
   content: string
   timestamp: string
   currentGoal?: string
+  onboardingStage?: string
   isUserSuggestion?: boolean
 }
 

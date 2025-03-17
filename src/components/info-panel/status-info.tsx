@@ -19,7 +19,7 @@ export default function StatusInfo() {
 
       <div className="flex flex-col items-center gap-1">
         <h3 className="text-md font-medium text-black">Current Goal</h3>
-        <div className="text-[#1977F2] font-medium">Get company’s name</div>
+        <div className="text-[#1977F2] font-medium">Identify user role</div>
       </div>
     </div>
   );

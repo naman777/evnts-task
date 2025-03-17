@@ -8,6 +8,7 @@ export const initialMessages: Message[] = [
       "Hello Fabio Rossi, welcome to ORAVOX, I’m OracIA, your sales intelligence agent. To tailor your experience, please select your role ",
     timestamp: new Date().toISOString(),
     currentGoal: "Identify user role",
+    onboardingStage: "Role & Personalization",
   },
   {
     id: "2",
@@ -16,6 +17,7 @@ export const initialMessages: Message[] = [
       "Understood, how many Realtors are in your organization? (You can give an approximate number.)",
     timestamp: new Date().toISOString(),
     currentGoal: "Identify user role",
+    onboardingStage: "Role & Personalization",
   },
   {
     id: "3",
@@ -23,6 +25,7 @@ export const initialMessages: Message[] = [
     content: "Roger that, what's the name of the real estate company",
     timestamp: new Date().toISOString(),
     currentGoal: "Get company’s name",
+    onboardingStage: "Profile & Preferences",
   },
   {
     id: "4",
@@ -31,6 +34,7 @@ export const initialMessages: Message[] = [
       "Great name! In order for me enhance my intelligence recommendation system  to your company, please provide me the company’s address",
     timestamp: new Date().toISOString(),
     currentGoal: "Get company’s name",
+    onboardingStage: "Profile & Preferences",
   },
 ];
 

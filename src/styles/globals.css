@@ -169,3 +169,32 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.before:animate-shimmer {
+  animation: shimmer 1.5s infinite linear;
+}
+
+
+.dots-container {
+  display: grid;
+  grid-template-columns: repeat(29, 20px); /* 29 is the max number of dots in a row */
+  justify-content: center; /* Center horizontally */
+  gap: 8px; /* Add space between dots */
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: gray;
+  opacity: 0.7;
+}
