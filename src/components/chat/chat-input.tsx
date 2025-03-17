@@ -47,14 +47,13 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
         <Clock className="h-5 w-5" />
       </button>
 
-      
       <button
         type="submit"
         onClick={handleSubmit}
         className="bg-gray-500 hover:bg-gray-600 rounded-full text-white p-2 flex items-center justify-center"
       >
-      <Image src={Arrow} alt="Send" width={16} height={16} />
-      </button> 
+        <Image src={Arrow} alt="Send" width={16} height={16} />
+      </button>
     </div>
   );
 }

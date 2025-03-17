@@ -25,7 +25,7 @@ export default function ChatInterface() {
   const isMobile = useMobile();
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
-  const [infoPanelWidth, setInfoPanelWidth] = useState(450); // Initial width
+  const [infoPanelWidth, setInfoPanelWidth] = useState(550); // Initial width
   const [isResizing, setIsResizing] = useState(false);
 
   const currentMessage = messages[currentMessageIndex];

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const models = ["OraclA cl-pro", "OraclA XT-2", "OraclA Quantum", "OraclA Ultra"];
+const models = ["OraclA c1-pro", "OraclA XT-2", "OraclA Quantum", "OraclA Ultra"];
 
 const InfoHeader = () => {
   const [selectedModel, setSelectedModel] = useState(models[0]);
@@ -12,6 +12,8 @@ const InfoHeader = () => {
       <div 
         className="flex items-center cursor-pointer text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-[#542B81] via-[#DC379F] to-[#F3A199]"
         onClick={() => setIsOpen(!isOpen)}
+
+        style={{ fontFamily: 'Sansation' }}
       >
         {selectedModel}
         <ChevronDown className="w-5 h-5 ml-2 text-gray-600 transition-transform duration-300" 

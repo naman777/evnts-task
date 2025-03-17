@@ -25,7 +25,7 @@ export default function InfoPanel({
   return (
     <div className="w-full bg-gradient-to-t from-pink-50 via-pink-50 to-[#FAF9F5] h-screen  pt-3">
       <div className="flex flex-col gap-2 px-4">
-        <StatusInfo />
+        <StatusInfo  />
         <LastMessage message={lastMessage} />
         <ConversationPaths
           isThinking={isThinking}

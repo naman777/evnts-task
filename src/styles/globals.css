@@ -156,3 +156,16 @@ body {
   background: linear-gradient(to right, #1977F2, #D22163);
 }
 
+@font-face {
+  font-family: 'Sansation';
+  src: url('/fonts/Sansation_Light.ttf') format('truetype');
+  font-weight: 400; /* Normal weight */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/Inter_24pt-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}

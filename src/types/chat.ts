@@ -3,6 +3,7 @@ export interface Message {
   sender: "user" | "bot"
   content: string
   timestamp: string
+  currentGoal?: string
   isUserSuggestion?: boolean
 }
 

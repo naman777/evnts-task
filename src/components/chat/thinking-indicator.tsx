@@ -19,7 +19,7 @@ export default function ThinkingIndicator() {
   }, [])
 
   return (
-    <div className="flex items-start mb-4 animate-pulse">
+    <div className="flex items-start mb-4 animate-pulse gap-2">
       <Image
           src={logo}
           alt="Logo"

@@ -1,10 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Avatar } from "@/components/ui/avatar";
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import type { Message } from "@/types/chat";
-import { Check, User2 } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 import chatBotImage from "@/assets/chat/chatbot-logo.svg";
 import Image from "next/image";
@@ -19,7 +18,6 @@ export default function MessageBubble({ message, isPrediction = false }: Message
   const [formattedTime, setFormattedTime] = useState("");
 
   useEffect(() => {
-    // Ensure the timestamp is formatted consistently on the client
     setFormattedTime(
       new Date(message.timestamp).toLocaleTimeString("en-US", {
         hour: "2-digit",
@@ -30,41 +28,39 @@ export default function MessageBubble({ message, isPrediction = false }: Message
 
   if (isBot) {
     return (
-      <div className={cn("flex items-end mb-4 gap-2", isPrediction && "opacity-80")}>
-        <Image src={chatBotImage} alt="Chatbot" width={24} height={24} className="rounded-full pb-8" />
+      <div className="flex items-end gap-2 mb-4" style={{ fontFamily: 'Inter', fontWeight: 400 }}>
+        {/* Bot Avatar */}
+        <Image src={chatBotImage} alt="Chatbot" width={32} height={32} className="rounded-full" />
 
-        <div className="max-w-[80%]">
-          <div className="bg-white p-3 rounded-lg shadow-sm">
-            <p className="text-sm">{message.content}</p>
+        <div className="max-w-[75%]">
+          <div className="relative bg-white p-3 rounded-lg shadow-md text-sm text-black">
+            <p className="pb-2">{message.content}</p>
+            {/* Time inside the bubble */}
+            <span className="absolute bottom-1 right-2 text-[10px] text-gray-400">{formattedTime}</span>
           </div>
-          <div className="text-xs text-gray-500 mt-1">{formattedTime}</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={cn("flex flex-col items-end mb-4", isPrediction && "opacity-80")}>
-      <div className="flex items-start justify-end max-w-[80%]">
-        <div className="mr-2">
-          <div
-            className={cn(
-              "p-3 rounded-lg shadow-sm",
-              message.isUserSuggestion ? "bg-[#E1FFC7] text-[#545961]" : "bg-[#E1FFC7] text-[#545961]"
-            )}
-          >
-            <p className="text-sm">{message.content}</p>
-          </div>
-          <div className="flex justify-end text-xs text-gray-500 mt-1">
-            {formattedTime}
-            <Check className="h-4 w-4 ml-1 text-green-500" />
-          </div>
+    <div className="flex justify-end mb-4 min-w-[2rem]">
+      <div className="flex flex-col items-end max-w-[75%]">
+        <div className="relative bg-[#DCF8C6] p-3 rounded-lg shadow-md text-sm text-[#545961] min-w-[7rem] max-w-[75%]">
+          <p className="pb-2">{message.content}</p>
+  
+          {/* Time & checkmark inside the bubble */}
+          <span className="absolute bottom-1 right-6 text-[10px] text-gray-600">{formattedTime}</span>
+          <Check className="absolute bottom-1 right-2 h-4 w-4 text-green-500" />
         </div>
-        <Avatar className="h-10 w-10 bg-gray-200">
-          <AvatarImage src="/placeholder.svg?height=40&width=40" alt="Fabio" />
-          <AvatarFallback>FR</AvatarFallback>
-        </Avatar>
       </div>
+  
+      {/* User Avatar */}
+      <Avatar className="h-8 w-8 ml-2">
+        <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
+        <AvatarFallback>FR</AvatarFallback>
+      </Avatar>
     </div>
   );
+  
 }
