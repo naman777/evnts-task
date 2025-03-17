@@ -95,13 +95,12 @@ export default function ChatInterface() {
     }
 
     setIsThinking(true);
-    setProgress((prev) => Math.min(prev + 10, 100));
-
+    
     // Find the next message based on the matched suggestion
     const nextMessageIndex = initialMessages.findIndex(
       (msg) => msg.id === matchedSuggestion.messageId
     );
-
+    
     if (
       nextMessageIndex === -1 ||
       nextMessageIndex === initialMessages.length - 1
@@ -110,7 +109,8 @@ export default function ChatInterface() {
       setIsThinking(false);
       return;
     }
-
+    
+    setProgress((prev) => Math.min(prev + 15, 100));
     const nextBotMessage = initialMessages[nextMessageIndex + 1];
     console.log(nextBotMessage)
     // Simulate bot response
@@ -236,7 +236,7 @@ export default function ChatInterface() {
 
           <div
             className="h-full flex-shrink-0 overflow-hidden bg-[#FAF9F5]"
-            style={{ width: `${infoPanelWidth}px` }}
+            style={{ width: `${infoPanelWidth}px`, minWidth: "500px" }}
           >
             <div className="flex flex-col h-full">
               <div className="sticky top-0 z-10 bg-[#FAF9F5] border-b border-gray-200">

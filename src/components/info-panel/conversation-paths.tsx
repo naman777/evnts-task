@@ -166,11 +166,11 @@ export default function ConversationPaths({
                 return (
                   <div
                     key={`dot-${dot.id}`}
-                    className={`h-2 w-2 rounded-full ${
+                    className={`h-2 w-2 rounded-full shadow-md ${
                       isThinking 
                         ? "bg-blue-400" 
                         : isSuggestionDot 
-                          ? "bg-pink-500 suggestion-dot" 
+                          ? "bg-gradient-to-t from-pink-500 via-pink-400 to-white suggestion-dot" 
                           : "bg-gray-300"
                     } transition-all duration-300`}
                     style={{

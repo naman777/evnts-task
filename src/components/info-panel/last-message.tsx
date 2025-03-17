@@ -12,6 +12,13 @@ interface LastMessageProps {
 export default function LastMessage({ message }: LastMessageProps) {
   if (!message) return null;
 
+  const formattedTime = message.timestamp
+  ? new Date(message.timestamp).toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  : "N/A";
+
   return (
     <div className="mb-6" >
       {/* Last Message Header */}
@@ -44,10 +51,7 @@ export default function LastMessage({ message }: LastMessageProps) {
 
           {/* Timestamp inside bubble */}
           <span className="absolute bottom-1 right-2 text-[10px] text-gray-500">
-            {new Date(message.timestamp).toLocaleTimeString("en-US", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            {formattedTime}
           </span>
         </div>
       </div>

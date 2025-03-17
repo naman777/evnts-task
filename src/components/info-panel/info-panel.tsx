@@ -22,20 +22,22 @@ export default function InfoPanel({
   onPredictMessages,
   handleSendMessage,
 }: InfoPanelProps) {
+
+  console.log("last msg",lastMessage);
   return (
     <div className="w-full bg-gradient-to-t from-pink-50 via-pink-50 to-[#FAF9F5] h-screen  pt-3">
       <div className="flex flex-col gap-2 px-4">
         <StatusInfo
-          // currentGoal={
-          //   parseInt(lastMessage.id) == 1 || parseInt(lastMessage.id) == 2
-          //     ? "Identify user role"
-          //     : "Get company’s name"
-          // }
-          // onboardingStage={
-          //   parseInt(lastMessage.id) == 1 || parseInt(lastMessage.id) == 2
-          //     ? "Role & Personalization"
-          //     : "Profile & Preferences"
-          // }
+          currentGoal={
+            parseInt(lastMessage?.id) == 1 || parseInt(lastMessage?.id) == 2
+              ? "Identify user role"
+              : "Get company’s name"
+          }
+          onboardingStage={
+            parseInt(lastMessage?.id) == 1 || parseInt(lastMessage?.id) == 2
+              ? "Role & Personalization"
+              : "Profile & Preferences"
+          }
         />
         <LastMessage message={lastMessage} />
         <ConversationPaths
